@@ -9,7 +9,7 @@ let text=(", "?*['a'-'z''A'-'Z'])*
 let intText=(", "?*['0'-'9'])*
 let etape=(['a'-'z''A'-'Z'' '';''1'-'9''('')'',''\n']*)*
 let return=['\n']
-let nimport=['a'-'z''A'-'Z''0'-'9'';'' ''('')'',']
+let nimport=(['a''-''z'',''A''-''Z'';''('')'' '':'])*
 
 let inputsymbols="input symbols : "(text as input)
 let stacksymbols="stack symbols : "(text as stack)
