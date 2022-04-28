@@ -1,13 +1,6 @@
-
 type token =
-  | INPUTSYMBOLS of string
-  | STACKSYMBOLS of string
-  | STATES of string
-  | INITIALSTATE of string
-  | INITIALSTACK of string 
-  | TRANSITION of string
-  | DIGIT of char
-  | OTHER 
+  | VERIF of string*string*string*string*string*string
+  | NEXT of string
   | EOF
 
 
