@@ -26,30 +26,30 @@ inputsymbols:
     INPUTSYMBOLS s = suite_lettres_nonvide {s}
 
 stacksymbols:
-    STACKSYMBOLS s=suite_lettres_nonvide        {s}
+    STACKSYMBOLS s=suite_lettres_nonvide {s}
 
 states:
     STATES s = suite_lettres_nonvide {s}
 
 initialstate:
-    INITIALSTATE s = LETTRE {s}
+    INITIALSTATE l = LETTRE {l}
 
 initialstack:
-    INITIALSTACK s = LETTRE {s}
+    INITIALSTACK l = LETTRE {l}
 
 suite_lettres_nonvide:
     | l=LETTRE                                    { [l] }
     | l=LETTRE COMMA s=suite_lettres_nonvide    { l::s }
 
 lettre_ou_vide:
-    |   {None}
+    |            {None}
     | l = LETTRE { Some l}
 
 transitions: TRANSITIONS t=translist {t}
 
 translist:
-    | t = transition {[t]}
-    | t = transition s = translist {t::s}
+    |       {[]}
+    | t=transition s = translist {t::s}
 
 transition:
     LPAREN
@@ -61,8 +61,8 @@ transition:
     RPAREN           { (l1,l2,l3,l4,s)}
 
 stack:
-    | {None}
-    | l=nonemptystack {Some l}
+    | {[]}
+    | s=nonemptystack {s}
 
 nonemptystack:
     | l=LETTRE {[l]}

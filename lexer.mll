@@ -7,13 +7,13 @@ let lettre = [ 'a'-'z''A'-'Z''1'-'9' ]
 
 rule main = parse
     | layout    { main lexbuf }
-    | "input symbols :"     { INPUTSYMBOLS }
+    | "input symbols:"     { INPUTSYMBOLS }
     | lettre as l { LETTRE l}
-    | "stack symbols :" {STACKSYMBOLS}
-    | "initial state :" {INITIALSTATE}
-    | "states :" {STATES}
-    | "initial stack symbol :" { INITIALSTACK}
-    | "transitions :" {TRANSITIONS}
+    | "stack symbols:" {STACKSYMBOLS}
+    | "initial state:" {INITIALSTATE}
+    | "states:" {STATES}
+    | "initial stack symbol:" { INITIALSTACK}
+    | "transitions:" {TRANSITIONS}
     | ')'			{ RPAREN }
     | '('			{ LPAREN }
     | ','           { COMMA }
