@@ -1,0 +1,53 @@
+State 0:
+input' -> . input [ # ]
+-- On STACKSYMBOLS shift to state 1
+-- On INPUTSYMBOLS shift to state 3
+-- On INITIALSTATE shift to state 5
+-- On INITIALSTACK shift to state 7
+-- On input shift to state 9
+-- On expression shift to state 10
+
+State 1:
+expression -> STACKSYMBOLS . STACK [ EOF ]
+-- On STACK shift to state 2
+
+State 2:
+expression -> STACKSYMBOLS STACK . [ EOF ]
+-- On EOF reduce production expression -> STACKSYMBOLS STACK 
+
+State 3:
+expression -> INPUTSYMBOLS . LETTRE [ EOF ]
+-- On LETTRE shift to state 4
+
+State 4:
+expression -> INPUTSYMBOLS LETTRE . [ EOF ]
+-- On EOF reduce production expression -> INPUTSYMBOLS LETTRE 
+
+State 5:
+expression -> INITIALSTATE . STATE [ EOF ]
+-- On STATE shift to state 6
+
+State 6:
+expression -> INITIALSTATE STATE . [ EOF ]
+-- On EOF reduce production expression -> INITIALSTATE STATE 
+
+State 7:
+expression -> INITIALSTACK . STACK [ EOF ]
+-- On STACK shift to state 8
+
+State 8:
+expression -> INITIALSTACK STACK . [ EOF ]
+-- On EOF reduce production expression -> INITIALSTACK STACK 
+
+State 9:
+input' -> input . [ # ]
+-- On # accept input
+
+State 10:
+input -> expression . EOF [ # ]
+-- On EOF shift to state 11
+
+State 11:
+input -> expression EOF . [ # ]
+-- On # reduce production input -> expression EOF 
+
