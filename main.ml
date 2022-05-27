@@ -136,5 +136,5 @@ let est_valide ast =
     Printf.printf "automate valide selon les critères de l'étape 2\n";
 ;;
 
-let _ = est_valide ast
 let _=excecute ast mots
+let _ = est_valide ast
