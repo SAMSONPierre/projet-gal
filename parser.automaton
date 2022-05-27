@@ -1,96 +1,96 @@
 State 0:
 input' -> . input [ # ]
--- On INPUTSYMBOLS shift to state 1
--- On inputsymbols shift to state 6
+-- On INPUT_SYMBOLS shift to state 1
+-- On input_symbols shift to state 6
 -- On input shift to state 19
 -- On declarations shift to state 20
 -- On automate shift to state 42
 
 State 1:
-inputsymbols -> INPUTSYMBOLS . suite_lettres_nonvide [ STACKSYMBOLS ]
+input_symbols -> INPUT_SYMBOLS . suite_lettres_nonvide [ STACK_SYMBOLS ]
 -- On LETTRE shift to state 2
 -- On suite_lettres_nonvide shift to state 5
 
 State 2:
-suite_lettres_nonvide -> LETTRE . [ STATES STACKSYMBOLS INITIALSTACK ]
-suite_lettres_nonvide -> LETTRE . COMMA suite_lettres_nonvide [ STATES STACKSYMBOLS INITIALSTACK ]
+suite_lettres_nonvide -> LETTRE . [ STATES STACK_SYMBOLS INITIAL_STATE ]
+suite_lettres_nonvide -> LETTRE . COMMA suite_lettres_nonvide [ STATES STACK_SYMBOLS INITIAL_STATE ]
 -- On COMMA shift to state 3
 -- On STATES reduce production suite_lettres_nonvide -> LETTRE 
--- On STACKSYMBOLS reduce production suite_lettres_nonvide -> LETTRE 
--- On INITIALSTACK reduce production suite_lettres_nonvide -> LETTRE 
+-- On STACK_SYMBOLS reduce production suite_lettres_nonvide -> LETTRE 
+-- On INITIAL_STATE reduce production suite_lettres_nonvide -> LETTRE 
 
 State 3:
-suite_lettres_nonvide -> LETTRE COMMA . suite_lettres_nonvide [ STATES STACKSYMBOLS INITIALSTACK ]
+suite_lettres_nonvide -> LETTRE COMMA . suite_lettres_nonvide [ STATES STACK_SYMBOLS INITIAL_STATE ]
 -- On LETTRE shift to state 2
 -- On suite_lettres_nonvide shift to state 4
 
 State 4:
-suite_lettres_nonvide -> LETTRE COMMA suite_lettres_nonvide . [ STATES STACKSYMBOLS INITIALSTACK ]
+suite_lettres_nonvide -> LETTRE COMMA suite_lettres_nonvide . [ STATES STACK_SYMBOLS INITIAL_STATE ]
 -- On STATES reduce production suite_lettres_nonvide -> LETTRE COMMA suite_lettres_nonvide 
--- On STACKSYMBOLS reduce production suite_lettres_nonvide -> LETTRE COMMA suite_lettres_nonvide 
--- On INITIALSTACK reduce production suite_lettres_nonvide -> LETTRE COMMA suite_lettres_nonvide 
+-- On STACK_SYMBOLS reduce production suite_lettres_nonvide -> LETTRE COMMA suite_lettres_nonvide 
+-- On INITIAL_STATE reduce production suite_lettres_nonvide -> LETTRE COMMA suite_lettres_nonvide 
 
 State 5:
-inputsymbols -> INPUTSYMBOLS suite_lettres_nonvide . [ STACKSYMBOLS ]
--- On STACKSYMBOLS reduce production inputsymbols -> INPUTSYMBOLS suite_lettres_nonvide 
+input_symbols -> INPUT_SYMBOLS suite_lettres_nonvide . [ STACK_SYMBOLS ]
+-- On STACK_SYMBOLS reduce production input_symbols -> INPUT_SYMBOLS suite_lettres_nonvide 
 
 State 6:
-declarations -> inputsymbols . stacksymbols states initialstate initialstack [ TRANSITIONS ]
--- On STACKSYMBOLS shift to state 7
--- On stacksymbols shift to state 9
+declarations -> input_symbols . stack_symbols states initial_state initial_stack [ TRANSITIONS ]
+-- On STACK_SYMBOLS shift to state 7
+-- On stack_symbols shift to state 9
 
 State 7:
-stacksymbols -> STACKSYMBOLS . suite_lettres_nonvide [ STATES ]
+stack_symbols -> STACK_SYMBOLS . suite_lettres_nonvide [ STATES ]
 -- On LETTRE shift to state 2
 -- On suite_lettres_nonvide shift to state 8
 
 State 8:
-stacksymbols -> STACKSYMBOLS suite_lettres_nonvide . [ STATES ]
--- On STATES reduce production stacksymbols -> STACKSYMBOLS suite_lettres_nonvide 
+stack_symbols -> STACK_SYMBOLS suite_lettres_nonvide . [ STATES ]
+-- On STATES reduce production stack_symbols -> STACK_SYMBOLS suite_lettres_nonvide 
 
 State 9:
-declarations -> inputsymbols stacksymbols . states initialstate initialstack [ TRANSITIONS ]
+declarations -> input_symbols stack_symbols . states initial_state initial_stack [ TRANSITIONS ]
 -- On STATES shift to state 10
 -- On states shift to state 12
 
 State 10:
-states -> STATES . suite_lettres_nonvide [ INITIALSTACK ]
+states -> STATES . suite_lettres_nonvide [ INITIAL_STATE ]
 -- On LETTRE shift to state 2
 -- On suite_lettres_nonvide shift to state 11
 
 State 11:
-states -> STATES suite_lettres_nonvide . [ INITIALSTACK ]
--- On INITIALSTACK reduce production states -> STATES suite_lettres_nonvide 
+states -> STATES suite_lettres_nonvide . [ INITIAL_STATE ]
+-- On INITIAL_STATE reduce production states -> STATES suite_lettres_nonvide 
 
 State 12:
-declarations -> inputsymbols stacksymbols states . initialstate initialstack [ TRANSITIONS ]
--- On INITIALSTACK shift to state 13
--- On initialstate shift to state 15
+declarations -> input_symbols stack_symbols states . initial_state initial_stack [ TRANSITIONS ]
+-- On INITIAL_STATE shift to state 13
+-- On initial_state shift to state 15
 
 State 13:
-initialstate -> INITIALSTACK . LETTRE [ INITIALSTATE ]
+initial_state -> INITIAL_STATE . LETTRE [ INITIAL_STACK ]
 -- On LETTRE shift to state 14
 
 State 14:
-initialstate -> INITIALSTACK LETTRE . [ INITIALSTATE ]
--- On INITIALSTATE reduce production initialstate -> INITIALSTACK LETTRE 
+initial_state -> INITIAL_STATE LETTRE . [ INITIAL_STACK ]
+-- On INITIAL_STACK reduce production initial_state -> INITIAL_STATE LETTRE 
 
 State 15:
-declarations -> inputsymbols stacksymbols states initialstate . initialstack [ TRANSITIONS ]
--- On INITIALSTATE shift to state 16
--- On initialstack shift to state 18
+declarations -> input_symbols stack_symbols states initial_state . initial_stack [ TRANSITIONS ]
+-- On INITIAL_STACK shift to state 16
+-- On initial_stack shift to state 18
 
 State 16:
-initialstack -> INITIALSTATE . LETTRE [ TRANSITIONS ]
+initial_stack -> INITIAL_STACK . LETTRE [ TRANSITIONS ]
 -- On LETTRE shift to state 17
 
 State 17:
-initialstack -> INITIALSTATE LETTRE . [ TRANSITIONS ]
--- On TRANSITIONS reduce production initialstack -> INITIALSTATE LETTRE 
+initial_stack -> INITIAL_STACK LETTRE . [ TRANSITIONS ]
+-- On TRANSITIONS reduce production initial_stack -> INITIAL_STACK LETTRE 
 
 State 18:
-declarations -> inputsymbols stacksymbols states initialstate initialstack . [ TRANSITIONS ]
--- On TRANSITIONS reduce production declarations -> inputsymbols stacksymbols states initialstate initialstack 
+declarations -> input_symbols stack_symbols states initial_state initial_stack . [ TRANSITIONS ]
+-- On TRANSITIONS reduce production declarations -> input_symbols stack_symbols states initial_state initial_stack 
 
 State 19:
 input' -> input . [ # ]
