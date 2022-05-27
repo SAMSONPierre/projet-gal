@@ -58,7 +58,8 @@ initial_state:
 initial_stack:
 	INITIAL_STACK l=LETTRE							{l}
 
-suite_lettres_nonvide: l=LETTRE									{[l]}
+suite_lettres_nonvide: 
+	| l=LETTRE									{[l]}
 	| l=LETTRE COMMA s=suite_lettres_nonvide	{l::s}
 
 transitions:
@@ -77,11 +78,13 @@ transition:
     	s=stack
     RPAREN                						{(l1,l2,l3,l4,s)}
 
-lettre_ou_vide: {None}
+lettre_ou_vide:
+	|		 												{None}
 	| l=LETTRE									{Some l}
 
 stack: { [] }
 	|	s=nonemptystack							{s}
 
-nonemptystack: l=LETTRE									{[l]}
+nonemptystack: 
+	| l=LETTRE									{[l]}
 	| l=LETTRE SEMICOLON s=nonemptystack		{l::s}
