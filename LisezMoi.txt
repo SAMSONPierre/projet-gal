@@ -1,0 +1,23 @@
+Projet Grammaire et analyse lexicale :
+
+    - SAMSON Pierre n°21956843 
+    - ZHANG Changrui
+
+Pour compiler le programme :
+Il faut utiliser la commande make dans le répertoire content tous les fichiers
+Puis faire ./parser < nom_du_fichier
+
+Organisation et répartition du travail : 
+    - Répartition :
+        - SAMSON Pierre :
+            Partie 1 et 2 sauf interprétation des mots
+        - ZHANG Changrui
+            interprétation des mots
+    
+    - Organisation :
+        Nous avons travaillé dans un premier temps à deux pour bien comprendre et bien se mettre
+        d'accord sur les choses à faire et sur la compréhension du sujet. Cela n'a pas eu de succès
+        puisque nous n'avions rien compris au sujet.
+
+        Puis, nous avons recommencé de 0 le projet en repartant du TP9 et en travaillant chacun de
+        notre côté.
